@@ -4,7 +4,8 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack --progress --watch",
-    "clean": "rm main.css*; rm bundle.js"
+    "clean": "rm main.css*; rm bundle.js",
+    "dev": "webpack-dev-server --progress --colors"
   },
   "dependencies": {
     "autoprefixer": "^6.5.4",
