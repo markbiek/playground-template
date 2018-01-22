@@ -33,7 +33,8 @@ const config = {
                 include: APP_DIR,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['env', 'react']
+                    presets: ['env', 'react'],
+                    plugins: ['transform-regenerator'],
                 }
             }
         ]
