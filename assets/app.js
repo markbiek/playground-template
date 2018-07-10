@@ -1,6 +1,6 @@
 (function ($) {
     $(document).ready(() => {
-        console.log('ready!');
+        console.log('playground ready!');
     });
 })(jQuery);
 

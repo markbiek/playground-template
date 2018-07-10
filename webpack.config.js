@@ -1,46 +1,57 @@
 const webpack = require('webpack');
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const BUILD_DIR = path.resolve(__dirname, '');
-const APP_DIR = path.resolve(__dirname, '');
+const BUILD_DIR = path.resolve(__dirname);
+const APP_DIR = path.resolve(__dirname, 'assets/');
 
-const extractSass = new ExtractTextPlugin({
-    filename: "[name].css"
-});
-
-const config = {
-    entry: [APP_DIR + '/app.js', APP_DIR + '/app.scss'],
+var config = {
+    mode: 'development',
+    entry: [
+        `${APP_DIR}/app.js`,
+        `${APP_DIR}/app.scss`
+    ],
     output: {
         path: BUILD_DIR,
         filename: 'bundle.js'
     },
     devtool: 'source-map',
+    devServer: {
+        contentBase: BUILD_DIR
+    },
     module: {
         rules: [
             {
-                test: /\.scss$/,
-                use: extractSass.extract({
-                    use: [{
-                        loader: 'css-loader'
-                    }, {
-                        loader: 'sass-loader'
-                    }]
-                })
+                test: /\.jsx?$/,
+                include: `${APP_DIR}/js`,
+                use: ['babel-loader']
             },
             {
-                test: /\.js?/,
-                include: APP_DIR,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['env', 'react'],
-                    plugins: ['transform-regenerator'],
-                }
+                test: /\.(sa|sc|c)ss$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'sass-loader',
+                ],
             }
         ]
     },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                styles: {
+                    name: 'styles',
+                    test: /\.css$/,
+                    chunks: 'all',
+                    enforce: true
+                }
+            }
+        }
+    },
     plugins: [
-        extractSass
+        new MiniCssExtractPlugin({
+            filename: 'bundle.css',
+        })
     ]
 };
 

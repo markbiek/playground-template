@@ -11,10 +11,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" media="all" />
-    <link rel="stylesheet" href="main.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="bundle.css" type="text/css" media="all" />
 </head>
 <body>
+    <section>
+        <h1>Playground Template</h1>
+
+        <p>I occasionally need to play around with some HTML/CSS/Javascript stuff in a way that doesn't work on http://codepen.io.</p>
+
+        <p>This is a simple template that I can use as a base for these kinds of experimental projects.</p>
+
+        <h2>Features</h2>
+        <ul>
+        <li>Fast build/watch with Webpack 4</li>
+        <li>ES6/ES17 support via Babel</li>
+        <li>Styles using SASS</li>
+        <li>jQuery 3.1</li>
+        </ul>
+
+        <h2>Commands</h2>
+        <ul>
+            <li>`npm run build` - Perform a basic webpack build of all files</li>
+            <li>`npm run watch` - Watch JS/SCSS files for changes</li>
+            <li>`npm run clean` - Remove compiled files</li>
+            <li>`npm run dev` - Start a webpack-dev-server on http://localhost:8080 (or http://localhost:8081) with hot-reloading</li>
+        </ul>
+    </section>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="bundle.js"></script>
 </body>

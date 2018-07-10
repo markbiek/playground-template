@@ -1,12 +1,11 @@
 I occasionally need to play around with some HTML/CSS/Javascript stuff in a way that doesn't work on http://codepen.io.
 
-This is a simple template that I can as a base for these kinds of experimental projects.
+This is a simple template that I can use as a base for these kinds of experimental projects.
 
 ### Features
-* Fast build/watch with webpack
+* Fast build/watch with Webpack 4
 * ES6/ES17 support via Babel
-* SCSS compilate
-* Bootstrap 3 styles
+* Styles using SASS
 * jQuery 3.1
 
 ### Commands
