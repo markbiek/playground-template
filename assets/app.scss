@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding" rel="stylesheet');
+
 * {
     box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nanum Gothic Coding', monospace;
+}
+
+section {
+    width: 80%;
+    margin: 0 auto;
 }
