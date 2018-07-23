@@ -16,14 +16,11 @@ var config = {
         filename: 'bundle.js'
     },
     devtool: 'source-map',
-    devServer: {
-        contentBase: BUILD_DIR
-    },
     module: {
         rules: [
             {
                 test: /\.jsx?$/,
-                include: `${APP_DIR}/js`,
+                include: `${APP_DIR}`,
                 use: ['babel-loader']
             },
             {

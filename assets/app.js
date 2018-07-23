@@ -1,20 +1,15 @@
-(function ($) {
-    $(document).ready(() => {
-        console.log('playground ready!');
-    });
-})(jQuery);
+import React from 'react';
+import { render } from 'react-dom';
 
-function* counter() {
-    let idx = 0;
+const $ = jQuery;
 
-    while (true) {
-        yield idx++;
+import App from './components/App';
+
+$(document).ready(() => {
+    let app = document.getElementById('app');
+    if (app) {
+        render(<App />, app);
     }
-}
 
-let gen = counter();
-
-console.log(gen.next().value);
-console.log(gen.next().value);
-console.log(gen.next().value);
-console.log(gen.next().value);
+    console.log('playground ready!');
+});
