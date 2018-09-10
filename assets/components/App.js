@@ -10,7 +10,10 @@ export default class App extends React.Component {
     render() {
         return (
             <Provider store={store}>
-                <DogImage />
+                <>
+                    <p>Doggy 👇</p>
+                    <DogImage />
+                </>
             </Provider>
         );
     }
