@@ -1,20 +1,37 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { connect } from 'react-redux';
 
-import store from '../store';
+import {
+    loadDogImage,
+} from '../modules/Dog/actions';
 
 import DogImage from './DogImage';
 
 export default class App extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            image: null
+        };
+    }
+
+    async componentDidMount() {
+        const resp = await loadDogImage();
+        const url = resp.data.url;
+
+        this.setState({
+            image: url,
+        });
+    }
+
     render() {
+        const { image } = this.state;
+
         return (
-            <Provider store={store}>
-                <>
-                    <p>Doggy 👇</p>
-                    <DogImage />
-                </>
-            </Provider>
+            <>
+                <p>Doggy 👇</p>
+                <DogImage image={image}/>
+            </>
         );
     }
 }
