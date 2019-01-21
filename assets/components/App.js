@@ -13,9 +13,15 @@ export default class App extends React.Component {
         this.state = {
             image: null
         };
+
+        this.refresh = this.refresh.bind(this);
     }
 
-    async componentDidMount() {
+    async refresh(e = null) {
+        if (e) {
+            e.preventDefault();
+        }
+
         const resp = await loadDogImage();
         const url = resp.data.url;
 
@@ -24,13 +30,17 @@ export default class App extends React.Component {
         });
     }
 
+    componentDidMount() {
+        this.refresh();
+    }
+
     render() {
         const { image } = this.state;
 
         return (
             <>
                 <p>Doggy 👇</p>
-                <DogImage image={image}/>
+                <DogImage image={image} refresh={this.refresh} />
             </>
         );
     }

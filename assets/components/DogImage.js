@@ -1,12 +1,15 @@
 import React from 'react';
 
-const DogImage = ({image}) => {
+const DogImage = ({image, refresh}) => {
     if (image == null) {
         return null;
     }
 
     return (
-        <img src={image} alt="A dog" width="320" />
+        <>
+            <a href="#" onClick={refresh}>[refresh]</a><br />
+            <img src={image} alt="A dog" width="320" />
+        </>
     );
 }
 
