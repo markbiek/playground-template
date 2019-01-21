@@ -16,7 +16,11 @@ class DogImage extends React.Component {
         this.refresh();
     }
 
-    async refresh() {
+    async refresh(e = null) {
+        if (e) {
+            e.preventDefault();
+        }
+
         const resp = await loadDogImage();
         const url = resp.data.url;
 
@@ -31,7 +35,10 @@ class DogImage extends React.Component {
         }
 
         return (
-            <img src={image} alt="A dog" width="320" />
+            <>
+                <a href="#" onClick={this.refresh}>[refresh]</a><br />
+                <img src={image} alt="A dog" width="320" />
+            </>
         );
     }
 }
