@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const WebpackNotifierPlugin = require('webpack-notifier');
 
 const BUILD_DIR = path.resolve(__dirname);
 const APP_DIR = path.resolve(__dirname, 'assets/');
@@ -48,7 +49,11 @@ var config = {
     plugins: [
         new MiniCssExtractPlugin({
             filename: 'bundle.css',
-        })
+        }),
+        new WebpackNotifierPlugin({
+            alwaysNotify: true,
+            skipFirstNotification: true,
+        }),
     ]
 };
 
