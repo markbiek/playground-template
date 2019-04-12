@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const $ = jQuery;
-
 export const DOG_SET_IMAGE = 'DOG_SET_IMAGE';
 
 export const dogSetImage = image => ({
