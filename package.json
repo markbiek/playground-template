@@ -4,7 +4,7 @@
     "scripts": {
         "build": "webpack --mode production",
         "watch": "webpack --progress --watch",
-        "clean": "rm -rf ./build/*",
+        "clean": "rm -f bundle*",
         "start": "npm run clean && webpack-serve --hot-client --open --reload"
     },
     "dependencies": {
