@@ -9,7 +9,7 @@ const APP_DIR = path.resolve(__dirname, 'assets/');
 var config = {
     mode: 'development',
     entry: [
-        `${APP_DIR}/app.js`,
+        `${APP_DIR}/app.tsx`,
         `${APP_DIR}/app.scss`
     ],
     output: {
@@ -20,7 +20,7 @@ var config = {
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
+                test: /\.(t|j)sx?$/,
                 include: `${APP_DIR}`,
                 use: ['babel-loader']
             },
