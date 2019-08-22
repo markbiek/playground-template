@@ -1,11 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-const $ = jQuery;
-
 import App from './components/App';
 
-$(document).ready(() => {
+document.addEventListener('DOMContentLoaded', () => {
     let app = document.getElementById('app');
     if (app) {
         render(<App />, app);
