@@ -2,8 +2,11 @@
     "name": "playground",
     "version": "1.0.0",
     "scripts": {
-        "build": "webpack --mode production",
-        "watch": "webpack --progress --watch",
+        "type-check": "tsc --noEmit",
+	"type-check:watch": "npm run type-check -- --watch",
+	"build": "npm run build:types && npm run build:js",
+	"build:types": "tsc --emitDeclarationOnly",
+	"build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
         "clean": "rm -rf ./build/*",
         "start": "npm run clean && webpack-serve --hot-client --open --reload"
     },
