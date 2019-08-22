@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Provider } from 'react-redux';
 import { connect } from 'react-redux';
 
@@ -11,29 +11,29 @@ import {
 
 const { dispatch } = store;
 
-class DogImage extends React.Component {
-    componentWillMount() {
-        this.refresh();
-    }
-
-    async refresh() {
+function DogImage({image}) {
+    const refresh = async () => {
         const resp = await loadDogImage();
         const url = resp.data.url;
 
         dispatch(dogSetImage(url));
     }
 
-    render() {
-        const { image } = this.props;
-
-        if (image == null) {
-            return null;
+    useEffect(() => {
+        if (!image) {
+            refresh();
         }
+    })
 
-        return (
-            <img src={image} alt="A dog" width="320" />
-        );
+    if (image == null) {
+        return null;
     }
+
+    console.log('woot');
+
+    return (
+        <img src={image} alt="A dog" width="320" />
+    );
 }
 
 const mapStateToProps = function (store) {
