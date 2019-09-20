@@ -1,47 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-import {
-    loadDogImage,
-} from '../modules/Dog/actions';
+import { loadDogImage } from '../modules/Dog/actions';
 
 import DogImage from './DogImage';
 
-export default class App extends React.Component {
-    constructor(props) {
-        super(props);
+const App = () => {
+    const [image, setImage] = useState(null);
 
-        this.state = {
-            image: null
-        };
+    useEffect(() => {
+        if (!image) {
+            refresh();
+        }
+    }, [image]);
 
-        this.refresh = this.refresh.bind(this);
-    }
-
-    async refresh(e = null) {
+    const refresh = async (e = null) => {
         if (e) {
             e.preventDefault();
         }
 
         const resp = await loadDogImage();
-        const url = resp.data.url;
 
-        this.setState({
-            image: url,
-        });
-    }
+        setImage(resp.data.url);
+    };
 
-    componentDidMount() {
-        this.refresh();
-    }
+    return (
+        <>
+            <p>Doggy 👇</p>
+            <DogImage image={image} refresh={refresh} />
+        </>
+    );
+};
 
-    render() {
-        const { image } = this.state;
-
-        return (
-            <>
-                <p>Doggy 👇</p>
-                <DogImage image={image} refresh={this.refresh} />
-            </>
-        );
-    }
-}
+export default App;
