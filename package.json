@@ -2,7 +2,7 @@
     "name": "playground",
     "version": "1.0.1",
     "scripts": {
-        "lint": "eslint -c .eslintrc.json assets/**/*.js",
+        "lint": "eslint -c .eslintrc.json assets/**/*.js;eslint -c .eslintrc.json assets/**/*.ts*",
         "test": "npm run lint",
         "prebuild": "npm run lint",
         "build": "webpack --mode production",

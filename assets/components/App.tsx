@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { loadDogImage } from '../modules/Dog/actions.ts';
 
-import DogImage from './DogImage';
+import DogImage from './DogImage.tsx';
 
 const App = () => {
     const [image, setImage] = useState(null);
