@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { loadDogImage } from '../modules/Dog/actions';
+import { loadDogImage } from '../modules/Dog/actions.ts';
 
 import DogImage from './DogImage';
 
@@ -18,15 +18,15 @@ const App = () => {
             e.preventDefault();
         }
 
-        const resp = await loadDogImage();
+        const url = await loadDogImage();
 
-        setImage(resp.data.url);
+        setImage(url);
     };
 
     return (
         <>
             <p>Doggy 👇</p>
-            <DogImage image={image} refresh={refresh} />
+            {image ? <DogImage image={image} refresh={refresh} /> : null}
         </>
     );
 };

@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import App from './components/App';
+import App from './components/App.tsx';
 
-let app = document.getElementById('app');
+let app: Element = document.getElementById('app');
 if (app) {
     render(<App />, app);
 }
