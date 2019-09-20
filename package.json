@@ -2,10 +2,19 @@
     "name": "playground",
     "version": "1.0.1",
     "scripts": {
+        "lint": "eslint -c .eslintrc.json assets/**/*.js",
+        "test": "npm run lint",
+        "prebuild": "npm run lint",
         "build": "webpack --mode production",
         "watch": "webpack --progress --watch",
         "clean": "rm -rf ./build/*",
         "start": "npm run clean && webpack-serve --hot-client --open --reload"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm test",
+            "pre-push": "npm test"
+        }
     },
     "dependencies": {
         "@babel/polyfill": "^7.0.0",
@@ -34,8 +43,20 @@
         "@babel/preset-react": "^7.0.0",
         "@types/react": "^16.9.2",
         "@types/react-dom": "^16.9.0",
+        "babel-eslint": "^10.0.3",
         "babel-loader": "^8.0.0",
         "css-loader": "^0.28.11",
+        "eslint": "^6.4.0",
+        "eslint-config-standard": "^14.1.0",
+        "eslint-config-standard-react": "^9.2.0",
+        "eslint-plugin-import": "^2.18.2",
+        "eslint-plugin-jsx-a11y": "^6.2.3",
+        "eslint-plugin-node": "^10.0.0",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-react": "^7.14.3",
+        "eslint-plugin-react-hooks": "^2.0.1",
+        "eslint-plugin-standard": "^4.0.1",
+        "husky": "^3.0.5",
         "mini-css-extract-plugin": "^0.4.2",
         "node-sass": "^4.9.3",
         "sass-loader": "^7.1.0",
